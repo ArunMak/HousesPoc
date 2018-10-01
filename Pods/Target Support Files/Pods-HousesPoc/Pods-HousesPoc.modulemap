@@ -1,0 +1,6 @@
+module Pods_HousesPoc {
+  umbrella header "Pods-HousesPoc-umbrella.h"
+
+  export *
+  module * { export * }
+}

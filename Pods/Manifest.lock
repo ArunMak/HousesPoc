@@ -1,0 +1,16 @@
+PODS:
+  - AMGrid (0.1.0)
+
+DEPENDENCIES:
+  - AMGrid (~> 0.1.0)
+
+SPEC REPOS:
+  https://github.com/ArunMak/AMPodSpecs.git:
+    - AMGrid
+
+SPEC CHECKSUMS:
+  AMGrid: 4b15fee3438847b742dc0ed4da0ed6f097c25a20
+
+PODFILE CHECKSUM: fb9a1f7247f5eab44e58034e1ed02f25c8145b58
+
+COCOAPODS: 1.5.3

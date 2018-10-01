@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  HousesPoc
 //
-//  Created by ArunMak on 29/09/18.
+//  Created by ArunMak on 30/09/18.
 //  Copyright © 2018 ArunMak. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.checkCoreData()
         return true
     }
 
@@ -41,53 +42,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        CoreDataManager.sharedManager.saveContext()
     }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "HousesPoc")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+    
+    func checkCoreData() {
+        if CoreDataManager.sharedManager.fetchAllHouses() != nil{
+            let house = CoreDataManager.sharedManager.fetchAllHouses()!
+                if house.count == 0 {
+                    if let path = Bundle.main.path(forResource: "Houses", ofType: "json") {
+                        do {
+                            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let house = jsonResult["houses"] as? [[String : Any]] {
+                                // do stuff
+                                for item in house{
+                                    print(item)
+                                    let dataValue = CoreDataManager.sharedManager.insertHouse(name: (item["name"] as? String)!, id: item["id"] as! Int16, description: item["details"] as! String , favourite: (item["favourite"] as? Bool)!, image: item["image"] as! String )
+                                    print(dataValue as Any)
+                                }
+                            }
+                        } catch {
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        }
+                    }
+                }
             }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
-
 }
 

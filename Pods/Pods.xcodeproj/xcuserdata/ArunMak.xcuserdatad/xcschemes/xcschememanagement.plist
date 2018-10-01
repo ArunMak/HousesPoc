@@ -4,19 +4,18 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HousesPoc.xcscheme</key>
+		<key>AMGrid.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-HousesPoc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>B649C5EB215EAE0300B77A71</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AMGrid
 class ViewController: UIViewController {
     // MARK: Instance Variables
     let MyCollectionViewCellId: String = "ListCollectionViewCell"
@@ -27,15 +28,18 @@ class ViewController: UIViewController {
          }else{
              menuButton.setImage(UIImage(named: "grid.png"), for: .normal)
         }
-        fetchAllHouses()
+         fetchAllHouses()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateDb), name: Notification.Name("UpdateDb"), object: nil)
-        let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: nil)
+        let bundle = Bundle(for: ListCollectionViewCell.self)
+        let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: bundle)
         collectionView.register(nibCell, forCellWithReuseIdentifier: MyCollectionViewCellId)
-        let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: nil)
+        let bundle1 = Bundle(for: GridCollectionViewCell.self)
+        let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: bundle1)
         collectionView.register(nibGridCell, forCellWithReuseIdentifier: gridCollectionViewCellId)
+       
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func didReceiveMemoryWarning() {
@@ -62,30 +66,8 @@ class ViewController: UIViewController {
     }
     
     func fetchAllHouses(){
-        
         if CoreDataManager.sharedManager.fetchAllHouses() != nil{
             house = CoreDataManager.sharedManager.fetchAllHouses()!
-            if house.count == 0 {
-                if let path = Bundle.main.path(forResource: "Houses", ofType: "json") {
-                    do {
-                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                        let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                        if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let house = jsonResult["houses"] as? [[String : Any]] {
-                            // do stuff
-                            for item in house{
-                                print(item)
-                                let dataValue = CoreDataManager.sharedManager.insertHouse(name: (item["name"] as? String)!, id: item["id"] as! Int16, description: item["details"] as! String , favourite: (item["favourite"] as? Bool)!, image: item["image"] as! String )
-                                print(dataValue as Any)
-                            }
-                             collectionView.reloadData()
-                        }
-                    } catch {
-                        let nserror = error as NSError
-                        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                    }
-                }
-                
-            }
         }
          collectionView.reloadData()
     }

@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FC498D9CF27E967C95C004D /* libPods-HousesPoc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4DF5CEB90CE3D85B07ED5A /* libPods-HousesPoc.a */; };
+		B630F009215F8A7900C710F0 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B630F008215F8A7900C710F0 /* FavouriteViewController.swift */; };
 		B649C5F0215EAE0300B77A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649C5EF215EAE0300B77A71 /* AppDelegate.swift */; };
 		B649C5F2215EAE0300B77A71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649C5F1215EAE0300B77A71 /* ViewController.swift */; };
 		B649C5F5215EAE0300B77A71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B649C5F3215EAE0300B77A71 /* Main.storyboard */; };
 		B649C5F8215EAE0300B77A71 /* HousesPoc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B649C5F6215EAE0300B77A71 /* HousesPoc.xcdatamodeld */; };
 		B649C5FA215EAE0300B77A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B649C5F9215EAE0300B77A71 /* Assets.xcassets */; };
 		B649C5FD215EAE0400B77A71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B649C5FB215EAE0400B77A71 /* LaunchScreen.storyboard */; };
+		B649C605215EAE7B00B77A71 /* Houses+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649C604215EAE7B00B77A71 /* Houses+CoreDataClass.swift */; };
+		B649C607215EAE9300B77A71 /* Houses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649C606215EAE9300B77A71 /* Houses+CoreDataProperties.swift */; };
+		B649C609215EAEAD00B77A71 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B649C608215EAEAD00B77A71 /* CoreDataManager.swift */; };
+		B649C60B215EC1A900B77A71 /* Houses.json in Resources */ = {isa = PBXBuildFile; fileRef = B649C60A215EC1A900B77A71 /* Houses.json */; };
+		B6B5D28A2160D258009AAF6F /* HouseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D2892160D258009AAF6F /* HouseDetailView.swift */; };
+		B6B5D28D216119A6009AAF6F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B5D28C216119A6009AAF6F /* MapKit.framework */; };
+		B6EE4E632162C18700C0B11B /* libAMGrid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EE4E642162C18700C0B11B /* libAMGrid.a */; };
+		B6FF068921602166007A3113 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF068821602166007A3113 /* Generics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A4DF5CEB90CE3D85B07ED5A /* libPods-HousesPoc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HousesPoc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		374388900C2F41C0010B810E /* Pods-HousesPoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousesPoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-HousesPoc/Pods-HousesPoc.release.xcconfig"; sourceTree = "<group>"; };
+		543E6E4D7B1E3200FAFA2740 /* Pods-HousesPoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousesPoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HousesPoc/Pods-HousesPoc.debug.xcconfig"; sourceTree = "<group>"; };
+		B630F008215F8A7900C710F0 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavouriteViewController.swift; path = ../FavouriteViewController.swift; sourceTree = "<group>"; };
 		B649C5EC215EAE0300B77A71 /* HousesPoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousesPoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B649C5EF215EAE0300B77A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B649C5F1215EAE0300B77A71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +38,14 @@
 		B649C5F9215EAE0300B77A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B649C5FC215EAE0400B77A71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B649C5FE215EAE0400B77A71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B649C604215EAE7B00B77A71 /* Houses+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Houses+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B649C606215EAE9300B77A71 /* Houses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Houses+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B649C608215EAEAD00B77A71 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B649C60A215EC1A900B77A71 /* Houses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Houses.json; sourceTree = "<group>"; };
+		B6B5D2892160D258009AAF6F /* HouseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailView.swift; sourceTree = "<group>"; };
+		B6B5D28C216119A6009AAF6F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B6EE4E642162C18700C0B11B /* libAMGrid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAMGrid.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6FF068821602166007A3113 /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +53,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EE4E632162C18700C0B11B /* libAMGrid.a in Frameworks */,
+				B6B5D28D216119A6009AAF6F /* MapKit.framework in Frameworks */,
+				6FC498D9CF27E967C95C004D /* libPods-HousesPoc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FF65B19956F120D06CDFF50 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				543E6E4D7B1E3200FAFA2740 /* Pods-HousesPoc.debug.xcconfig */,
+				374388900C2F41C0010B810E /* Pods-HousesPoc.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B609824D215FBC4A00F5607E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B649C5F6215EAE0300B77A71 /* HousesPoc.xcdatamodeld */,
+				B649C604215EAE7B00B77A71 /* Houses+CoreDataClass.swift */,
+				B649C606215EAE9300B77A71 /* Houses+CoreDataProperties.swift */,
+				B649C608215EAEAD00B77A71 /* CoreDataManager.swift */,
+				B649C60A215EC1A900B77A71 /* Houses.json */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		B649C5E3215EAE0300B77A71 = {
 			isa = PBXGroup;
 			children = (
 				B649C5EE215EAE0300B77A71 /* HousesPoc */,
 				B649C5ED215EAE0300B77A71 /* Products */,
+				B6B5D28B216119A6009AAF6F /* Frameworks */,
+				5FF65B19956F120D06CDFF50 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +104,52 @@
 		B649C5EE215EAE0300B77A71 /* HousesPoc */ = {
 			isa = PBXGroup;
 			children = (
+				B6B65BEE21622AFB002D907D /* Singleton */,
+				B6B65BED21622ADD002D907D /* View */,
+				B6B65BEC2162299B002D907D /* Controller */,
+				B609824D215FBC4A00F5607E /* CoreData */,
 				B649C5EF215EAE0300B77A71 /* AppDelegate.swift */,
-				B649C5F1215EAE0300B77A71 /* ViewController.swift */,
 				B649C5F3215EAE0300B77A71 /* Main.storyboard */,
 				B649C5F9215EAE0300B77A71 /* Assets.xcassets */,
 				B649C5FB215EAE0400B77A71 /* LaunchScreen.storyboard */,
 				B649C5FE215EAE0400B77A71 /* Info.plist */,
-				B649C5F6215EAE0300B77A71 /* HousesPoc.xcdatamodeld */,
 			);
 			path = HousesPoc;
+			sourceTree = "<group>";
+		};
+		B6B5D28B216119A6009AAF6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6EE4E642162C18700C0B11B /* libAMGrid.a */,
+				B6B5D28C216119A6009AAF6F /* MapKit.framework */,
+				0A4DF5CEB90CE3D85B07ED5A /* libPods-HousesPoc.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6B65BEC2162299B002D907D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B649C5F1215EAE0300B77A71 /* ViewController.swift */,
+				B630F008215F8A7900C710F0 /* FavouriteViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B6B65BED21622ADD002D907D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6B5D2892160D258009AAF6F /* HouseDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6B65BEE21622AFB002D907D /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				B6FF068821602166007A3113 /* Generics.swift */,
+			);
+			path = Singleton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B649C601215EAE0400B77A71 /* Build configuration list for PBXNativeTarget "HousesPoc" */;
 			buildPhases = (
+				E25FDA05BD9A31C69B401137 /* [CP] Check Pods Manifest.lock */,
 				B649C5E8215EAE0300B77A71 /* Sources */,
 				B649C5E9215EAE0300B77A71 /* Frameworks */,
 				B649C5EA215EAE0300B77A71 /* Resources */,
+				C1B33A067938B05537C112E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -100,6 +187,11 @@
 					B649C5EB215EAE0300B77A71 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -128,19 +220,67 @@
 			files = (
 				B649C5FD215EAE0400B77A71 /* LaunchScreen.storyboard in Resources */,
 				B649C5FA215EAE0300B77A71 /* Assets.xcassets in Resources */,
+				B649C60B215EC1A900B77A71 /* Houses.json in Resources */,
 				B649C5F5215EAE0300B77A71 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C1B33A067938B05537C112E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HousesPoc/Pods-HousesPoc-resources.sh",
+				"${PODS_ROOT}/AMGrid/AMGrid/GridCollectionViewCell.xib",
+				"${PODS_ROOT}/AMGrid/AMGrid/ListCollectionViewCell.xib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GridCollectionViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ListCollectionViewCell.nib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HousesPoc/Pods-HousesPoc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E25FDA05BD9A31C69B401137 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HousesPoc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B649C5E8215EAE0300B77A71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B649C609215EAEAD00B77A71 /* CoreDataManager.swift in Sources */,
+				B649C605215EAE7B00B77A71 /* Houses+CoreDataClass.swift in Sources */,
+				B6B5D28A2160D258009AAF6F /* HouseDetailView.swift in Sources */,
 				B649C5F2215EAE0300B77A71 /* ViewController.swift in Sources */,
 				B649C5F0215EAE0300B77A71 /* AppDelegate.swift in Sources */,
+				B630F009215F8A7900C710F0 /* FavouriteViewController.swift in Sources */,
+				B6FF068921602166007A3113 /* Generics.swift in Sources */,
+				B649C607215EAE9300B77A71 /* Houses+CoreDataProperties.swift in Sources */,
 				B649C5F8215EAE0300B77A71 /* HousesPoc.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,10 +416,13 @@
 		};
 		B649C602215EAE0400B77A71 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 543E6E4D7B1E3200FAFA2740 /* Pods-HousesPoc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = HousesPoc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.houses.HousesPoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -290,10 +433,12 @@
 		};
 		B649C603215EAE0400B77A71 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 374388900C2F41C0010B810E /* Pods-HousesPoc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = HousesPoc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.houses.HousesPoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";

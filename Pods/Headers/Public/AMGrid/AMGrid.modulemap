@@ -1,0 +1,6 @@
+module AMGrid {
+  umbrella header "AMGrid-umbrella.h"
+
+  export *
+  module * { export * }
+}

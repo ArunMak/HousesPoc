@@ -1,50 +1,68 @@
 //
-//  ViewController.swift
+//  FavouriteViewController.swift
 //  HousesPoc
 //
 //  Created by ArunMak on 30/09/18.
 //  Copyright © 2018 ArunMak. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreData
-class ViewController: UIViewController {
-    // MARK: Instance Variables
+import AMGrid
+class FavouriteViewController :UIViewController {
+  // MARK: Instance Variables
     let MyCollectionViewCellId: String = "ListCollectionViewCell"
     let gridCollectionViewCellId: String = "GridCollectionViewCell"
+    @IBOutlet weak var favouriteCollectionView: UICollectionView!
     var detailView:HouseDetailView!
-    
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
     var house: [NSManagedObject] = []
     
-    // MARK: View life cycle
+    @IBOutlet weak var menuButton: UIButton!
     
+    // MARK: View life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         if Generics.sharedInstance.cellType {
+       
+        if Generics.sharedInstance.cellType {
             menuButton.setImage(UIImage(named: "menu.png"), for: .normal)
-         }else{
-             menuButton.setImage(UIImage(named: "grid.png"), for: .normal)
+        }else{
+            menuButton.setImage(UIImage(named: "grid.png"), for: .normal)
         }
-        fetchAllHouses()
     }
-    override func viewDidLoad() {
+    
+   override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateDb), name: Notification.Name("UpdateDb"), object: nil)
-        let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: nil)
-        collectionView.register(nibCell, forCellWithReuseIdentifier: MyCollectionViewCellId)
-        let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: nil)
-        collectionView.register(nibGridCell, forCellWithReuseIdentifier: gridCollectionViewCellId)
+    let bundle = Bundle(for: ListCollectionViewCell.self)
+    let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: bundle)
+    favouriteCollectionView.register(nibCell, forCellWithReuseIdentifier: MyCollectionViewCellId)
+    let bundle1 = Bundle(for: GridCollectionViewCell.self)
+    let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: bundle1)
+    favouriteCollectionView.register(nibGridCell, forCellWithReuseIdentifier: gridCollectionViewCellId)
+        fetchAllHouses()
         // Do any additional setup after loading the view, typically from a nib.
+       
     }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: Menu ButtonAction
-    @IBAction func saveButtonAction(_ sender: Any) {
+    func fetchAllHouses(){
+        
+        if CoreDataManager.sharedManager.fetchAllHouses() != nil{
+            house = CoreDataManager.sharedManager.fetchFavourites()!
+        }
+        favouriteCollectionView.reloadData()
+    }
+    // MARK: Notification center delegate method
+    @objc func updateDb(notification: Notification) {
+        // Take Action on Notification
+        fetchAllHouses()
+    }
+    // MARK: Menu Button Action
+    @IBAction func menuButtonAction(_ sender: Any) {
         if Generics.sharedInstance.cellType {
             menuButton.setImage(UIImage(named: "grid.png"), for: .normal)
             Generics.sharedInstance.cellType = false
@@ -52,50 +70,11 @@ class ViewController: UIViewController {
             menuButton.setImage(UIImage(named: "menu.png"), for: .normal)
             Generics.sharedInstance.cellType = true
         }
-        collectionView.reloadData()
+        favouriteCollectionView.reloadData()
     }
-    
-    // MARK: Notifiation center delegate method
-    @objc func updateDb(notification: Notification) {
-        fetchAllHouses()
-        // Take Action on Notification
-    }
-    
-    func fetchAllHouses(){
-        
-        if CoreDataManager.sharedManager.fetchAllHouses() != nil{
-            house = CoreDataManager.sharedManager.fetchAllHouses()!
-            if house.count == 0 {
-                if let path = Bundle.main.path(forResource: "Houses", ofType: "json") {
-                    do {
-                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                        let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                        if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let house = jsonResult["houses"] as? [[String : Any]] {
-                            // do stuff
-                            for item in house{
-                                print(item)
-                                let dataValue = CoreDataManager.sharedManager.insertHouse(name: (item["name"] as? String)!, id: item["id"] as! Int16, description: item["details"] as! String , favourite: (item["favourite"] as? Bool)!, image: item["image"] as! String )
-                                print(dataValue as Any)
-                            }
-                             collectionView.reloadData()
-                        }
-                    } catch {
-                        let nserror = error as NSError
-                        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                    }
-                }
-                
-            }
-        }
-         collectionView.reloadData()
-    }
-  
-
-
 }
-
-// MARK: Collection View datasource
-extension ViewController: UICollectionViewDataSource {
+// MARK: Collection view Data Source
+extension FavouriteViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -106,6 +85,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let houseObj  = house[indexPath.row]
         print(houseObj)
         if Generics.sharedInstance.cellType {
@@ -113,45 +93,39 @@ extension ViewController: UICollectionViewDataSource {
             cell.houseNameLbl.text = houseObj.value(forKey: "houseName") as? String
             cell.houseDescLbl.text = houseObj.value(forKeyPath: "houseDesc") as? String
             cell.houseImageView.image = UIImage(named: (houseObj.value(forKeyPath: "houseImage") as? String)!)
-            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: gridCollectionViewCellId, for: indexPath) as! GridCollectionViewCell
             cell.houseNameLbl.text = houseObj.value(forKeyPath: "houseName") as? String
             cell.houseImageView.image = UIImage(named: (houseObj.value(forKeyPath: "houseImage") as? String)!)
-            if (houseObj.value(forKeyPath: "favourite") as? Bool)! {
-                cell.favouriteImageView.isHidden = false
-            }else{
-                 cell.favouriteImageView.isHidden = true
-            }
-           // cell.backgroundColor = UIColor.blue
+            // cell.backgroundColor = UIColor.blue
             return cell
         }
     }
-        
+    
     
 }
-// MARK: Collection View Delegate Methods
-extension ViewController: UICollectionViewDelegate {
+
+// MARK: Collection View Delegate
+extension FavouriteViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let houseObj  = house[indexPath.row]
-         print(houseObj)
+        print(houseObj)
         detailView = HouseDetailView(house: houseObj as! Houses)
         UIApplication.shared.keyWindow!.addSubview(detailView)
         UIApplication.shared.keyWindow!.bringSubview(toFront: detailView)
-        
     }
 }
-// MARK: Collection View Flow layout methods
-extension ViewController: UICollectionViewDelegateFlowLayout {
+// MARK: Colletion View Flow Layout
+extension FavouriteViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         print((collectionView.bounds.size.width/3))
         print(self.view.frame.size.width)
-        if Generics.sharedInstance.cellType{
+        if Generics.sharedInstance.cellType {
             return CGSize.init(width: UIScreen.main.bounds.width - 20, height: 80)
         }else{
             return CGSize(width: (collectionView.bounds.size.width/3), height: (collectionView.bounds.size.width/3))
@@ -184,6 +158,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     
 }
+
 
 
 
