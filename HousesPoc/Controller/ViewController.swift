@@ -69,8 +69,24 @@ class ViewController: UIViewController {
         }
          collectionView.reloadData()
     }
-  
-
+    
+    // MARK: Orientation method
+     func shouldAutorotate() -> Bool {
+        // Lock autorotate
+        return false
+    }
+    
+     func supportedInterfaceOrientations() -> Int {
+        
+        // Only allow Portrait
+        return Int(UIInterfaceOrientationMask.portrait.rawValue)
+    }
+    
+     func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        
+        // Only allow Portrait
+        return UIInterfaceOrientation.portrait
+    }
 
 }
 

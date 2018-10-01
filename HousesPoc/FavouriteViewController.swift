@@ -29,6 +29,7 @@ class FavouriteViewController :UIViewController {
         }else{
             menuButton.setImage(UIImage(named: "grid.png"), for: .normal)
         }
+        fetchAllHouses()
     }
     
    override func viewDidLoad() {
@@ -70,6 +71,27 @@ class FavouriteViewController :UIViewController {
         }
         favouriteCollectionView.reloadData()
     }
+    
+    // MARK: Orientation method
+     func shouldAutorotate() -> Bool {
+        // Lock autorotate
+        return false
+    }
+    
+     func supportedInterfaceOrientations() -> Int {
+        
+        // Only allow Portrait
+        return Int(UIInterfaceOrientationMask.portrait.rawValue)
+    }
+    
+     func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        
+        // Only allow Portrait
+        return UIInterfaceOrientation.portrait
+    }
+    
+    
+    
 }
 // MARK: Collection view Data Source
 extension FavouriteViewController: UICollectionViewDataSource {
