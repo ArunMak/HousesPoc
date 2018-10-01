@@ -33,11 +33,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateDb), name: Notification.Name("UpdateDb"), object: nil)
-        let bundle = Bundle(for: ListCollectionViewCell.self)
-        let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: bundle)
+        let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: Bundle(for: ListCollectionViewCell.self))
         collectionView.register(nibCell, forCellWithReuseIdentifier: MyCollectionViewCellId)
-        let bundle1 = Bundle(for: GridCollectionViewCell.self)
-        let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: bundle1)
+        let nibGridCell = UINib(nibName: gridCollectionViewCellId, bundle: Bundle(for: GridCollectionViewCell.self))
         collectionView.register(nibGridCell, forCellWithReuseIdentifier: gridCollectionViewCellId)
        
         // Do any additional setup after loading the view, typically from a nib.
